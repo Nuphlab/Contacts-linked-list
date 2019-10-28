@@ -1,35 +1,32 @@
-//
-//  Contacts.cpp
-//  Contacts
-//
-//  Created by Westley Holden on 10/23/19.
-//  Copyright © 2019 Westley Holden. All rights reserved.
-//
-
 #include "Contacts.h"
 
-ContactNode::ContactNode(string name, string phoneNum, ContactNode* next) {
-    this->contactName = name;
-    this->contactPhoneNum = phoneNum;
-    this->nextNodePtr = next;
+ContactNode::ContactNode(string name, string phoneNum, ContactNode* newPointer) {
+	contactName = name;
+	contactPhoneNum = phoneNum;
+	nextNodePtr = newPointer;
 }
-void ContactNode::InsertAfter(ContactNode* nodeLoc) {
-    ContactNode* temp = nullptr;
-    
-    temp = this->nextNodePtr;
-    this->nextNodePtr = nodeLoc;
-    nodeLoc->nextNodePtr = temp;
-    
+void ContactNode::InsertAfter(ContactNode* newPointer) {
+	ContactNode* temp = nullptr;
+
+	temp = nextNodePtr;
+	nextNodePtr = newPointer;
+	newPointer->nextNodePtr = temp;
 }
-string ContactNode::GetName() {
-    return this->contactName;
+void ContactNode::GetName() {
+
 }
-string ContactNode::GetPhoneNumber() {
-    return this->contactPhoneNum;
+void ContactNode::GetPhoneNumber() {
+
 }
 ContactNode* ContactNode::GetNext() {
-    return this->nextNodePtr;
+	return nextNodePtr;
 }
-void PrintContactNode() {
-    
+void ContactNode::PrintContactNode() {
+	cout << "Name: " << contactName << endl;
+	cout << "Phone number: " << contactPhoneNum << endl;
+}
+
+
+ContactNode::~ContactNode() {
+	delete nextNodePtr;
 }
